@@ -140,6 +140,31 @@ STのST-LINK Utilityというのがあるので使ってみる
 
 できたっぽい。もしかすると電源電圧か何かが良くないのかもしれない。
 
+## QMKを入れる
+
+KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード https://booth.pm/ja/items/840614  
+をそのままなぞる。
+
+	$ git submodule add https://github.com/qmk/qmk_firmware
+	$ cd qmk_fimware
+	$ git submodule sync --recursive
+	$ git submodule update --init --recursive
+	$ make chibios_test/stm32_f103_onekey:default
+	QMK Firmware 0.8.13
+	make: *** No rule to make target 'chibios_test/stm32_f103_onekey:default'. Stop.
+	|
+	|  QMK's make format recently changed to use folder locations and colons:
+	|     make project_folder:keymap[:target]
+	|  Examples:
+	|     make planck/rev4:default:dfu
+	|     make planck:default
+	|
+
+あれっもしや...  
+https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/  
+404だと...\_(┐「ε:)\_  
+２年前はもうだめな模
+
 ## リンク
 https://ht-deko.com/arduino/stm32f103c8t6.html
 https://qiita.com/nanbuwks/items/ba37f049f45378da0e2b#stm32f103c8とは

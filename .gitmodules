@@ -1,3 +1,6 @@
 [submodule "STM32duino-bootloader"]
 	path = STM32duino-bootloader
 	url = https://github.com/rogerclarkmelbourne/STM32duino-bootloader
+[submodule "qmk_firmware"]
+	path = qmk_firmware
+	url = https://github.com/qmk/qmk_firmware
