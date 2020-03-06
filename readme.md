@@ -5,12 +5,15 @@ Blue Pillといわれる STM32F103C8T6 の乗った安いもりもりマイコ�
 AとかBとかのピンがいっぱいあるのがわかる。
 72MHz駆動の32Bitマイコン。
 
-MCU | STM32F103 (ARM 32-bit Cortex-M3 CPU Core)
-CLOCK | 72MHz (Max)
-VOLTAGE | 2.0～3.6V
-| DIPで使うPin | 40pin(3.3v,GNDx2,R) |
+|||
+|---|---|
+|MCU | STM32F103 (ARM 32-bit Cortex-M3 CPU Core)|
+|CLOCK | 72MHz (Max)|
+|VOLTAGE | 2.0～3.6V|
+| DIPに出てるPin | 40pin |
 |Flash |64KBytes|
 |SRAM |20KByte|
+|EEPROM| ない 捻出できるらしい|
 厳密にはマイコンじゃなくてMPUらしい(よくしらない)。つまりつよい。
 
 2年前の資料だが、  
@@ -138,7 +141,15 @@ STのST-LINK Utilityというのがあるので使ってみる
 	07:42:22 : Connection to device is lost: check power supply and debug connection.
 	07:42:22 : If the target is in low power mode, please enable "Debug in Low Power mode" option from Target->settings menu.
 
-できたっぽい。もしかすると電源電圧か何かが良くないのかもしれない。
+いちおうVerification...OKとかあるのでできたっぽい？
+できたのかできてないのか...
+もしかすると電源電圧か何かが良くないのかもしれない。
+
+## もしかして回路の製造ミス？
+
+http://jazz-love.ddo.jp/wordpress/2018/08/17/mac-blue-pill%E3%81%A7stm32duino%E3%82%92%E4%BD%BF%E3%81%86%E3%81%9F%E3%82%81%E3%81%AB%E3%83%96%E3%83%BC%E3%83%88%E3%83%AD%E3%83%BC%E3%83%80%E3%83%BC%E3%82%92%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%82%80/
+
+によると抵抗が間違っているらしい。1.5kΩの表面実装抵抗を持ってないのでaitendoで注文する。
 
 ## QMKを入れる
 
@@ -163,7 +174,7 @@ KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード https://boo
 あれっもしや...  
 https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/  
 404だと...\_(┐「ε:)\_  
-２年前はもうだめな模
+２年前はもうだめな模様
 
 ## リンク
 https://ht-deko.com/arduino/stm32f103c8t6.html
