@@ -26,13 +26,13 @@ win10 + msys2
 
 ## 購入したもの
 
-| 物             | 説明              | 値段(税別)                  | 正式名称                                     | URL                                  |
-| ---            | ---               | ---                         | ---                                          | ---                                  |
-| BluePill       | 使うマイコン      | 750円                       | DIP化STM32モジュール [STM32-D40]             | http://www.aitendo.com/product/13348 |
-| ST-LINK V2     | ライター          | 500円                       | STM8/STM32ライタ [STLINKV2]                  | http://www.aitendo.com/product/16082 |
-| ブレッドボード | マイコンとか刺す  | 270円                       | ブレッドボード [MB-102]                      | http://www.aitendo.com/product/13803 |
-| 導線           | つなぐケーブル    | ピンヘッダ用接続ケーブル PS | 200円                                        | http://www.aitendo.com/product/15275 |
-| 抵抗           | 表面実装抵抗1.5kΩ | 100円                       | ★0603★チップ抵抗★5%★（20個入） [R0603-5-110] | http://www.aitendo.com/product/9962  |
+| 物             | 説明              | 値段(税別) | 正式名称                                     | URL                                  |
+| ---            | ---               | ---        | ---                                          | ---                                  |
+| BluePill       | 使うマイコン      | 750円      | DIP化STM32モジュール [STM32-D40]             | http://www.aitendo.com/product/13348 |
+| ST-LINK V2     | ライター          | 500円      | STM8/STM32ライタ [STLINKV2]                  | http://www.aitendo.com/product/16082 |
+| ブレッドボード | マイコンとか刺す  | 270円      | ブレッドボード [MB-102]                      | http://www.aitendo.com/product/13803 |
+| 導線           | つなぐケーブル    | 200円      | ピンヘッダ用接続ケーブル PS                  | http://www.aitendo.com/product/15275 |
+| 抵抗           | 表面実装抵抗1.5kΩ | 100円      | ★0603★チップ抵抗★5%★（20個入） [R0603-5-110] | http://www.aitendo.com/product/9962  |
 
 ## やったこと
 
