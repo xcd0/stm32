@@ -74,6 +74,10 @@ http://www.aitendo.com/product/15275
 
 ### bootloaderの導入でてこずった
 
+↑にたどり着くまでちまちま作業で3日かかった。
+
+以下折り畳み。(githubは折り畳みを初期状態で折りたたんでほしい...)
+
 <details>
 <summary>奮闘</summary>
 
