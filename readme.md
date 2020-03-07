@@ -26,20 +26,21 @@ win10 + msys2
 
 ## 購入したもの
 
-| 物         | 説明         | 値段(税別) | 正式名称                         | URL                                  |
-| ---        | ---          | ---        | ---                              | ---                                  |
-| BluePill   | 使うマイコン | 750円      | DIP化STM32モジュール [STM32-D40] | http://www.aitendo.com/product/13348 |
-| ST-LINK V2 | ライター     | 500円      | STM8/STM32ライタ [STLINKV2]      | http://www.aitendo.com/product/16082 |
-|導線|つなぐケーブル|ピンヘッダ用接続ケーブル PS|http://www.aitendo.com/product/15275 |
-|||||
+| 物             | 説明              | 値段(税別)                  | 正式名称                                     | URL                                  |
+| ---            | ---               | ---                         | ---                                          | ---                                  |
+| BluePill       | 使うマイコン      | 750円                       | DIP化STM32モジュール [STM32-D40]             | http://www.aitendo.com/product/13348 |
+| ST-LINK V2     | ライター          | 500円                       | STM8/STM32ライタ [STLINKV2]                  | http://www.aitendo.com/product/16082 |
+| ブレッドボード | マイコンとか刺す  | 270円                       | ブレッドボード [MB-102]                      | http://www.aitendo.com/product/13803 |
+| 導線           | つなぐケーブル    | ピンヘッダ用接続ケーブル PS | 200円                                        | http://www.aitendo.com/product/15275 |
+| 抵抗           | 表面実装抵抗1.5kΩ | 100円                       | ★0603★チップ抵抗★5%★（20個入） [R0603-5-110] | http://www.aitendo.com/product/9962  |
 
 ## やったこと
 
 1. bootloaderを入れる。
+1. 抵抗を入れ替える。
 
 
-
-### bootloaderの導入
+## bootloaderの導入
 
 [長くなったので./bootloader/readme.mdに書いた。](./bootloader/readme.md)  
 
@@ -54,8 +55,10 @@ windows用の必要なファイルはbootloaderディレクトリに全部置い
 
 ## もしかして回路の製造ミス？
 
-http://jazz-love.ddo.jp/wordpress/2018/08/17/mac-blue-pill%E3%81%A7stm32duino%E3%82%92%E4%BD%BF%E3%81%86%E3%81%9F%E3%82%81%E3%81%AB%E3%83%96%E3%83%BC%E3%83%88%E3%83%AD%E3%83%BC%E3%83%80%E3%83%BC%E3%82%92%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%82%80/
+http://jazz-love.ddo.jp/wordpress/2018/08/17/mac-blue-pill%E3%81%A7stm32duino%E3%82%92%E4%BD%BF%E3%81%86%E3%81%9F%E3%82%81%E3%81%AB%E3%83%96%E3%83%BC%E3%83%88%E3%83%AD%E3%83%BC%E3%83%80%E3%83%BC%E3%82%92%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%82%80/  
 によると抵抗が間違っているらしい。1.5kΩの表面実装抵抗を持ってないのでaitendoで注文する。
+
+→ 注文した。届いた。入れ替えた。表面実装の半田はしんどい...
 
 
 ## QMKを入れる
