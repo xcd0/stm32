@@ -4,3 +4,6 @@
 [submodule "qmk_firmware"]
 	path = qmk_firmware
 	url = https://github.com/qmk/qmk_firmware
+[submodule "Arduino_STM32"]
+	path = Arduino_STM32
+	url = https://github.com/rogerclarkmelbourne/Arduino_STM32
