@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # stm32を使ってみる
 
 Blue Pillといわれる STM32F103C8T6 の乗った安いもりもりマイコンを使ってみる。  
@@ -52,6 +53,10 @@ windows用の必要なファイルはbootloaderディレクトリに全部置い
  BluePillがそこそこ早く(0.2秒間隔くらい？)ちかちかする。
 詳しくは./bootloader/readme.mdを参照。
 
+## もしかして回路の製造ミス？
+
+http://jazz-love.ddo.jp/wordpress/2018/08/17/mac-blue-pill%E3%81%A7stm32duino%E3%82%92%E4%BD%BF%E3%81%86%E3%81%9F%E3%82%81%E3%81%AB%E3%83%96%E3%83%BC%E3%83%88%E3%83%AD%E3%83%BC%E3%83%80%E3%83%BC%E3%82%92%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%82%80/
+によると抵抗が間違っているらしい。1.5kΩの表面実装抵抗を持ってないのでaitendoで注文する。
 
 
 ## QMKを入れる
@@ -77,8 +82,5 @@ KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード https://boo
 あれっもしや...  
 https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/  
 404だと...\_(┐「ε:)\_  
-２年前はもうだめな模
+２年前はもうだめな模様
 
-## リンク
-https://ht-deko.com/arduino/stm32f103c8t6.html
-https://qiita.com/nanbuwks/items/ba37f049f45378da0e2b#stm32f103c8とは
