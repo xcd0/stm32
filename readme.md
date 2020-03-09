@@ -90,7 +90,6 @@ http://jazz-love.ddo.jp/wordpress/2018/08/17/mac-blue-pill%E3%81%A7stm32duino%E3
 Bootloaderは書き込めたっぽいので、
 bootloaderを経由したUSBでの書き込みを試す。
 
-### 書き込むバイナリの用意
 
 KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード https://booth.pm/ja/items/840614  
 をそのままなぞる。
@@ -115,12 +114,17 @@ https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/
 404だと...\_(┐「ε:)\_  
 ２年前はもうだめな模様\_(┐「ε:)\_
 
+
+### 書き込むバイナリの用意
+
 これでは書き込むためのバイナリが手に入らない...
 とりあえずAruduinoでLチカのバイナリを作成する。
 これはST-LINK経由で書き込んだら正しく動作した。
 
 これをUSB経由で書き込めるかテストする。
 (正しく動作するかは別。
+
+### USB経由で書き込む→ダメ
 
 [KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード](https://booth.pm/ja/items/840614)
 の通りdfu-utilを使って書き込む。
@@ -140,6 +144,9 @@ https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/
 
 うまくいかなかった。
 ジャンパピンを変えてみたりリセットピンをポチポチしてみたりしたが特に変わりなかった。
+
+### DFU用のドライバーを入れる
+
 ここでデバイスマネージャーを見ると
 
 ![](./img/device_manager_maple003.png)
@@ -153,6 +160,9 @@ https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/
 ![](./img/device_manager_maple_DFU.png)
 
 のようにいい感じになった。
+
+### USB経由で書き込む→これでもダメ
+
 この状態で実行すると、
 
 	$ ./dfu-util -a 2 -D Blink/Blink.ino.bin
