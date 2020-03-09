@@ -6,11 +6,29 @@ ST-LINK V2 を使って書き込んだ。
 
 windows用の必要なファイルはbootloaderディレクトリに全部置いている。
 
-windowsでmsysを使っているならこのディレクトリに入って、
+windowsでmsysを使っているなら
+ジャンパピンをST-LINK V2をつないだ状態で、
+このディレクトリに入って、
 
 	$ ./st-flash.exe write generic_boot20_pc13.bin 0x8000000
 
 でよい。
+
+	$ ./st-flash.exe write generic_boot20_pc13.bin 0x8000000
+	st-flash 1.6.0
+	2020-03-09T20:28:41 INFO usb.c: -- exit_dfu_mode
+	2020-03-09T20:28:41 INFO common.c: Loading device parameters....
+	2020-03-09T20:28:41 INFO common.c: Device connected is: F1 Medium-density device, id 0x20036410
+	2020-03-09T20:28:41 INFO common.c: SRAM size: 0x5000 bytes (20 KiB), Flash: 0x10000 bytes (64 KiB) in pages of 1024 byte
+	s
+	2020-03-09T20:28:41 INFO common.c: Attempting to write 7172 (0x1c04) bytes to stm32 address: 134217728 (0x8000000)
+	Flash page at addr: 0x08001c00 erased
+	2020-03-09T20:28:41 INFO common.c: Finished erasing 8 pages of 1024 (0x400) bytes
+	2020-03-09T20:28:41 INFO common.c: Starting Flash write for VL/F0/F3/F1_XL core id
+	2020-03-09T20:28:41 INFO flash_loader.c: Successfully loaded flash loader in sram
+	  8/8 pages written
+	2020-03-09T20:28:42 INFO common.c: Starting verification of write complete
+	2020-03-09T20:28:42 INFO common.c: Flash written and verified! jolly good!
 
 汎用的に書くと、以下のようになる。
 
@@ -20,6 +38,7 @@ windowsでmsysを使っているならこのディレクトリに入って、
 1. generic_boot20_pc13.binをカレントディレクトリに置く。
 1. `st-flash.exe write generic_boot20_pc13.bin 0x8000000` で書き込む。
 1. BluePillがそこそこ早くちかちかする。(0.2秒間隔くらい？)
+	* 早くちかちかしているのはDFUモードを表している？
 
 これでよいはず。
 

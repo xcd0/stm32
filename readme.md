@@ -54,6 +54,7 @@ macもlinuxもあるので別に何でも構わないのだが、とりあえず
 1. bootloaderを入れた
 1. 抵抗を入れ替えた
 1. USB経由での書き込みを試みた→まだうまくいかない
+1. STM32F103についてデータシート読んだ
 
 ## bootloaderの導入
 
@@ -84,8 +85,12 @@ http://jazz-love.ddo.jp/wordpress/2018/08/17/mac-blue-pill%E3%81%A7stm32duino%E3
 
 → 注文した。届いた。入れ替えた。表面実装の半田はしんどい...
 
+## USB経由での書き込み
 
-## QMKを入れる
+Bootloaderは書き込めたっぽいので、
+bootloaderを経由したUSBでの書き込みを試す。
+
+### 書き込むバイナリの用意
 
 KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード https://booth.pm/ja/items/840614  
 をそのままなぞる。
@@ -108,13 +113,98 @@ KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード https://boo
 あれっもしや...  
 https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/  
 404だと...\_(┐「ε:)\_  
-２年前はもうだめな模様
+２年前はもうだめな模様\_(┐「ε:)\_
 
-## USB経由での書き込み
+これでは書き込むためのバイナリが手に入らない...
+とりあえずAruduinoでLチカのバイナリを作成する。
+これはST-LINK経由で書き込んだら正しく動作した。
 
-仕組みの私の現状の理解は、
-* bootloaderが0x2000番地以降に書かれる。
-* USBをつなぐとbootloaderが起動し、短い期間の間、USBでの書き込みができる状態になる。(これがDFUモード？)
-* 特に何もなければ bootloader に設定されている
+これをUSB経由で書き込めるかテストする。
+(正しく動作するかは別。
+
+[KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード](https://booth.pm/ja/items/840614)
+の通りdfu-utilを使って書き込む。
+
+	$ ./dfu-util -a 2 -D Blink/Blink.ino.bin 
+	dfu-util 0.9
+
+	Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+	Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+	This program is Free Software and has ABSOLUTELY NO WARRANTY
+	Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+
+	Invalid DFU suffix signature
+	A valid DFU suffix will be required in a future dfu-util release!!!
+	Cannot open DFU device 1eaf:0003
+	No DFU capable USB device available
+
+うまくいかなかった。
+ジャンパピンを変えてみたりリセットピンをポチポチしてみたりしたが特に変わりなかった。
+ここでデバイスマネージャーを見ると
+
+![](./img/device_manager_maple003.png)
+
+のようにドライバー欲しそうな表示になっていた。  
+[電子牛乳 - BluePill に USB 経由でプログラムを転送する](http://milkandlait.blogspot.com/2018/10/bluepill-usb.html)  
+を参考に
+[Windows 用 DFU のデバイスドライバ](https://github.com/rogerclarkmelbourne/Arduino_STM32/archive/master.zip)
+の中の Arduino_STM32/drivers/win/install_drivers.bat をたたくと
+
+![](./img/device_manager_maple_DFU.png)
+
+のようにいい感じになった。
+この状態で実行すると、
+
+	$ ./dfu-util -a 2 -D Blink/Blink.ino.bin
+	dfu-util 0.9
+
+	Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+	Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+	This program is Free Software and has ABSOLUTELY NO WARRANTY
+	Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+
+	Opening DFU capable USB device...
+	ID 1eaf:0003
+	Run-time device DFU version 0110
+	Claiming USB DFU Interface...
+	Setting Alternate Setting #2 ...
+	Determining device status: state = dfuIDLE, status = 0
+	dfuIDLE, continuing
+	DFU mode device DFU version 0110
+	Device returned transfer size 1024
+	Copying data from PC to DFU device
+	Download    [======================== ]  96%        59392 bytesInvalid DFU suffix signature
+	A valid DFU suffix will be required in a future dfu-util release!!!
+	Error sending completion packet
+
+のように書き込んでる感のある表示があり、
+おっ、っとなったが、96%でErrorになった\_(:3 」∠ )\_
+
+バイナリファイルが良くない可能性もあるので別のバイナリを書き込んで見る。
+以下のものはqmk+chibiOSでビルドされたキーボードのバイナリである。
+
+$ ./dfu-util -a 2 -D handwired_bluepill_bluepill70_default.bin
+dfu-util 0.9
+
+Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+This program is Free Software and has ABSOLUTELY NO WARRANTY
+Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+
+Opening DFU capable USB device...
+ID 1eaf:0003
+Run-time device DFU version 0110
+Claiming USB DFU Interface...
+Setting Alternate Setting #2 ...
+Determining device status: state = dfuIDLE, status = 0
+dfuIDLE, continuing
+DFU mode device DFU version 0110
+Device returned transfer size 1024
+Copying data from PC to DFU device
+Download    [======================== ]  99%        25680 bytesInvalid DFU suffix signature
+A valid DFU suffix will be required in a future dfu-util release!!!
+Error sending completion packet
+
+%は違うが同じようにエラーになった。
 
 
