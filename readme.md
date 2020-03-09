@@ -217,4 +217,62 @@ https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/
 
 %は違うが同じようにエラーになった。
 
+### 助けてもらった
+
+[自作キーボード](http://biacco42.hatenablog.com/entry/2017/11/17/093000)の皆さんに助けていただいた。
+
+ログは[ここ](https://discordapp.com/channels/376937950409392130/377073908496465920/686565348610146311)から
+
+すでに入っていたlibusbドライバが問題であった。
+
+![](./img/libusb_0.png)
+
+デバイスマネージャーからドライバーを削除する。
+
+![](./img/libusb_1.png)
+
+この状態で[Zadig](https://zadig.akeo.ie/)を使ってWinUSBドライバーをインストールする。
+
+https://docs.qmk.fm/#/ja/driver_installation_zadig
+
+インストール後bluepillを抜き差しすると
+
+![](./img/libusb_2.png)
+
+このように認識が変化した。
+この状態で書き込みを実行するとうまくいった。
+大変助かりましたありがとうございました。
+
+	$ ./dfu-util -a 2 -D handwired_bluepill_bluepill70_default.bin 
+	dfu-util 0.9
+
+	Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+	Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+	This program is Free Software and has ABSOLUTELY NO WARRANTY
+	Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+
+	Opening DFU capable USB device...
+	ID 1eaf:0003
+	Run-time device DFU version 0110
+	Claiming USB DFU Interface...
+	Setting Alternate Setting #2 ...
+	Determining device status: state = dfuIDLE, status = 0
+	dfuIDLE, continuing
+	DFU mode device DFU version 0110
+	Device returned transfer size 1024
+	Copying data from PC to DFU device
+	Download    [=========================] 100%        25680 bytes
+	Download done.
+	state(8) = dfuMANIFEST-WAIT-RESET, status(0) = No error condition is present
+	Done!
+	Invalid DFU suffix signature
+	A valid DFU suffix will be required in a future dfu-util release!!!
+
+## DFU永続化モード
+
+[KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード](https://booth.pm/ja/items/840614)  
+ではC14に3.3Vを10kΩを通してつなぐとDFU永続モードに入ると書いてあるが、  
+2020/03現在はうまくいかないようだ。
+ただBOOT1のジャンパピンを1にして同様のことができることを教えてもらった。
+
 
