@@ -193,27 +193,27 @@ https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/
 バイナリファイルが良くない可能性もあるので別のバイナリを書き込んで見る。
 以下のものはqmk+chibiOSでビルドされたキーボードのバイナリである。
 
-$ ./dfu-util -a 2 -D handwired_bluepill_bluepill70_default.bin
-dfu-util 0.9
+	$ ./dfu-util -a 2 -D handwired_bluepill_bluepill70_default.bin
+	dfu-util 0.9
 
-Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
-Copyright 2010-2016 Tormod Volden and Stefan Schmidt
-This program is Free Software and has ABSOLUTELY NO WARRANTY
-Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
+	Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+	Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+	This program is Free Software and has ABSOLUTELY NO WARRANTY
+	Please report bugs to http://sourceforge.net/p/dfu-util/tickets/
 
-Opening DFU capable USB device...
-ID 1eaf:0003
-Run-time device DFU version 0110
-Claiming USB DFU Interface...
-Setting Alternate Setting #2 ...
-Determining device status: state = dfuIDLE, status = 0
-dfuIDLE, continuing
-DFU mode device DFU version 0110
-Device returned transfer size 1024
-Copying data from PC to DFU device
-Download    [======================== ]  99%        25680 bytesInvalid DFU suffix signature
-A valid DFU suffix will be required in a future dfu-util release!!!
-Error sending completion packet
+	Opening DFU capable USB device...
+	ID 1eaf:0003
+	Run-time device DFU version 0110
+	Claiming USB DFU Interface...
+	Setting Alternate Setting #2 ...
+	Determining device status: state = dfuIDLE, status = 0
+	dfuIDLE, continuing
+	DFU mode device DFU version 0110
+	Device returned transfer size 1024
+	Copying data from PC to DFU device
+	Download    [======================== ]  99%        25680 bytesInvalid DFU suffix signature
+	A valid DFU suffix will be required in a future dfu-util release!!!
+	Error sending completion packet
 
 %は違うが同じようにエラーになった。
 
