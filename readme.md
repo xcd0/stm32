@@ -1,6 +1,7 @@
 # stm32を使ってみる
 
 Blue Pillといわれる STM32F103C8T6 の乗った安いもりもりマイコンを使ってみる。  
+最終的にはキーボード制御に使いたい。
 
 ![](./img/STM32-D40-dim.png)
 
@@ -20,18 +21,32 @@ AとかBとかのピンがいっぱいあるのがわかる。
 
 2年前の資料だが、[KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード](https://booth.pm/ja/items/840614) を参考にちまちまやってみる。
 
+Pro Microよりよさげなところ
+
+* GPIOが多い
+* 記憶領域が大きい
+* microUSBがもげなさそう
+* やっすい
+
+Pro Microより良くないところ
+
+* QMK firmwareの情報が少ない
+
+
 ## 環境
 
 win10 + msys2
 
+macもlinuxもあるので別に何でも構わないのだが、とりあえずこれでいく。
+
 ## 購入したもの
 
-| 物             | 説明              | 値段(税別) | 正式名称                                     | URL                                  |
-| ---            | ---               | ---        | ---                                          | ---                                  |
-| BluePill       | 使うマイコン      | 750円      | DIP化STM32モジュール [STM32-D40]             | http://www.aitendo.com/product/13348 |
-| ST-LINK V2     | ライター          | 500円      | STM8/STM32ライタ [STLINKV2]                  | http://www.aitendo.com/product/16082 |
-| ブレッドボード | マイコンとか刺す  | 270円      | ブレッドボード [MB-102]                      | http://www.aitendo.com/product/13803 |
-| 導線           | つなぐケーブル    | 200円      | ピンヘッダ用接続ケーブル PS                  | http://www.aitendo.com/product/15275 |
+| 物             | 説明               | 値段(税別) | 正式名称                                         | URL                                  |
+| ---            | ---                | ---        | ---                                              | ---                                  |
+| BluePill       | 使うマイコン       | 750円      | DIP化STM32モジュール [STM32-D40]                 | http://www.aitendo.com/product/13348 |
+| ST-LINK V2     | ライター           | 500円      | STM8/STM32ライタ [STLINKV2]                      | http://www.aitendo.com/product/16082 |
+| ブレッドボード | マイコンとか刺す   | 270円      | ブレッドボード [MB-102]                          | http://www.aitendo.com/product/13803 |
+| 導線           | つなぐケーブル     | 200円      | ピンヘッダ用接続ケーブル PS                      | http://www.aitendo.com/product/15275 |
 | 抵抗           | 表面実装抵抗1.5kΩ | 100円      | ★0603★チップ抵抗★5%★（20個入） [R0603-5-110] | http://www.aitendo.com/product/9962  |
 
 ## やったこと
@@ -50,7 +65,7 @@ windows用の必要なファイルはbootloaderディレクトリに全部置い
 	cd bootloader
 	./st-flash.exe write generic_boot20_pc13.bin 0x8000000
 
- BluePillがそこそこ早く(0.2秒間隔くらい？)ちかちかする。
+書き込めるとBluePillがそこそこ早く(0.2秒間隔くらい？)ちかちかする。
 詳しくは./bootloader/readme.mdを参照。
 
 ## もしかして回路の製造ミス？
@@ -85,4 +100,7 @@ KbD Pre APRIL 2018 - 春から始める ARM で自作キーボード https://boo
 https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/  
 404だと...\_(┐「ε:)\_  
 ２年前はもうだめな模様
+
+
+
 
