@@ -51,9 +51,9 @@ macもlinuxもあるので別に何でも構わないのだが、とりあえず
 
 ## やったこと
 
-1. bootloaderを入れる。
-1. 抵抗を入れ替える。
-
+1. bootloaderを入れた
+1. 抵抗を入れ替えた
+1. USB経由での書き込みを試みた→まだうまくいかない
 
 ## bootloaderの導入
 
@@ -65,8 +65,17 @@ windows用の必要なファイルはbootloaderディレクトリに全部置い
 	cd bootloader
 	./st-flash.exe write generic_boot20_pc13.bin 0x8000000
 
-書き込めるとBluePillがそこそこ早く(0.2秒間隔くらい？)ちかちかする。
 詳しくは./bootloader/readme.mdを参照。
+
+書き込めるとBluePillがそこそこ早く(0.2秒間隔くらい？)ちかちかする。
+
+https://firtel.blogspot.com/2017/03/blue-pill-stm32duino.html
+によると
+
+> USB Bootloaderを書き込んだあとはBoot1のジャンパをもとに戻すのを忘れずに。
+> プログラムを何も書き込んでない状態だとずっとDFUモードになるみたいでLEDが点滅した状態になる。
+
+ということでこの点滅はDFUモードなる状態を表しているのかもしれない。
 
 ## もしかして回路の製造ミス？
 
@@ -101,6 +110,11 @@ https://github.com/qmk/qmk_firmware/tree/master/keyboards/chibios_test/
 404だと...\_(┐「ε:)\_  
 ２年前はもうだめな模様
 
+## USB経由での書き込み
 
+仕組みの私の現状の理解は、
+* bootloaderが0x2000番地以降に書かれる。
+* USBをつなぐとbootloaderが起動し、短い期間の間、USBでの書き込みができる状態になる。(これがDFUモード？)
+* 特に何もなければ bootloader に設定されている
 
 
