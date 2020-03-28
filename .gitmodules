@@ -1,12 +1,12 @@
 [submodule "STM32duino-bootloader"]
-	path = STM32duino-bootloader
+	path = preparation/STM32duino-bootloader
 	url = https://github.com/rogerclarkmelbourne/STM32duino-bootloader
 [submodule "qmk_firmware"]
-	path = qmk_firmware
+	path = preparation/qmk_firmware
 	url = https://github.com/qmk/qmk_firmware
 [submodule "Arduino_STM32"]
-	path = Arduino_STM32
+	path = preparation/Arduino_STM32
 	url = https://github.com/rogerclarkmelbourne/Arduino_STM32
 [submodule "stm32_private"]
-	path = stm32_private
+	path = preparation/stm32_private
 	url = https://github.com/xcd0/stm32_private
