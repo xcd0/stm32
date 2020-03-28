@@ -5,6 +5,8 @@
 
 ## 復習
 
+<details>
+<summary></summary>
 まず復習を兼ねて、bootloaderを焼いてみる。
 まずリセットボタンに近いピンを1にする。これで永続DFUモードにする。
 この状態でコマンドを実行する。dfu-utilを使う。st-flashは使わない。
@@ -36,7 +38,12 @@
 
 できている。
 
+</details>
+
 ## 既存のファームウェアを試す
+
+<details>
+<summary></summary>
 
 githubのqmk_firmwareを検索すると
 rule.mkの中に`MCU = STM32F103`とあるキーボードが見つかる。
@@ -159,7 +166,9 @@ qmk_firmwareの `#define DIODE_DIRECTION COL2ROW` は負論理だとROWがスキ
 電子云々は無視して、+から-に電気が流れるとすると、  
 ROW側の電圧をCOLより低くしてCOLからROWに電気を流す感じだ。  
 fennelは間違ってダイオードを反対に実装したのでROW2COLにする\_(:3 」∠ )\_  
-  
+
+</details>
+
 ## [Ortho 75](https://github.com/qmk/qmk_firmware/tree/master/keyboards/cannonkeys/ortho75)をベースに書き換えてみる
 
 [別リポジトリ xcd0/fennel](https://github.com/xcd0/fennel/tree/master/fennel) にもろもろ用意した。
